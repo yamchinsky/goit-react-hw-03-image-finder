@@ -4,8 +4,8 @@ import Button from "./button/Button";
 import ImageGallery from "./imagegallery/ImageGallery";
 import Modal from "./modal/Modal";
 import * as api from "./services/api";
-import Loader from "./loader/Loader";
 import Error from "./Error/Error";
+import Loader from "react-loader-spinner";
 
 class App extends Component {
   state = {
@@ -26,12 +26,11 @@ class App extends Component {
   }
 
   getDataApi = (text, page) => {
-    console.log(text);
     let scrollHeight = 0;
     if (page === 1) {
       scrollHeight = 0;
     } else {
-      scrollHeight = document.documentElement.scrollHeight - 144;
+      scrollHeight = document.documentElement.scrollHeight - (0, 50);
     }
     this.setState({ isLoading: true });
     api
@@ -103,21 +102,16 @@ class App extends Component {
             <img src={imgModal.largeImageURL} alt={imgModal.tags} />
           </Modal>
         )}
-
         <Searchbar onSubmit={this.formSubmitHandler} />
         <ImageGallery
-          images={images}
           data={arrMap(images)}
           openModal={this.handleClickIsOpenModal}
-        >
-          {/* <ImageGalleryItem /> */}
-        </ImageGallery>
-
+        />
         {error && <Error>Image not found!</Error>}
-        {isLoading && <Loader />}
         {images.length > 0 && (
           <Button oneMorePageOnClick={this.oneMorePageOnClick} />
         )}
+        .{isLoading && <Loader />}
       </>
     );
   }

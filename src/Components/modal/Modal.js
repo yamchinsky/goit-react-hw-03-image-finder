@@ -1,8 +1,15 @@
-import React, { Component, createNode } from "react";
+import React, { Component, createRef } from "react";
+import PropTypes from "prop-types";
 import { ModalStyled } from "./ModalStyled";
 
 class Modal extends Component {
-  overlay = createNode();
+  overlayRef = createRef();
+
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    closeModal: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPressESC);
   }
@@ -17,20 +24,19 @@ class Modal extends Component {
     }
   };
 
-  handleBackdropClick = (e) => {
-    const { current } = this.overlayNode;
-    if (e.target === current) {
-      this.props.closeModal();
-    }
-  };
-  state = {};
+  // handleBackdropClick = (e) => {
+  //   if (e.currentTarget !== "IMG") {
+  //     this.props.closeModal();
+  //   }
+  // };
+
   render() {
     const { children } = this.props;
     return (
       <ModalStyled>
         <div
           className="Overlay"
-          node={this.overlayNode}
+          node={this.overlayRef}
           onClick={this.handleBackdropClick}
           role="presentation"
         >

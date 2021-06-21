@@ -1,20 +1,24 @@
-import axios from "axios";
 import React, { Component } from "react";
 import { SearchbarStyled } from "./SearchbarStyled";
 import { SearchFormStyled } from "./SearchFormStyled";
+import PropTypes from "prop-types";
 
 class Searchbar extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: "",
   };
 
-  handleChange = (evt) => {
-    const { name, value } = evt.currentTarget;
+  handleChange = (e) => {
+    const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (evt) => {
-    evt.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     this.props.onSubmit(this.state.name.trim());
     if (!this.state.name) {

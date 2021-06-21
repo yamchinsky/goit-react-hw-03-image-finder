@@ -18,7 +18,7 @@ export const ImageGalleryItemStyled = styled.li`
 
   .ImageGalleryItem-image {
     width: 100%;
-    height: 270px;
+    height: 190px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }

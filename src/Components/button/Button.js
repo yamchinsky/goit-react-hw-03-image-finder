@@ -6,7 +6,7 @@ const Button = ({ oneMorePageOnClick }) => {
   return (
     <ButtonStyledContainer>
       <button type="button" className="btn" onClick={oneMorePageOnClick}>
-        <span className="load-more">Load more</span>
+        <span className="load-more">Load more </span>
       </button>
     </ButtonStyledContainer>
   );

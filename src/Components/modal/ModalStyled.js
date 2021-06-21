@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalStyled = styled.header`
+export const ModalStyled = styled.div`
   position: fixed;
   top: 0;
   left: 0;
