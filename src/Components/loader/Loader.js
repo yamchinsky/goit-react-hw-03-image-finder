@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
-import Style from "./Loader.module.css";
 
 export default class App extends Component {
-  state = {};
-
   render() {
     return (
-      <div className={Style.spinner}>
+      <div className="spinner">
         <Loader
           type="Puff"
           color="#00BFFF"

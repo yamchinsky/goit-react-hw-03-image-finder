@@ -6,6 +6,8 @@ import Modal from "./modal/Modal";
 import * as api from "./services/api";
 import Error from "./Error/Error";
 import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { LoaderStyled } from "./loader/LoaderStyled";
 
 class App extends Component {
   state = {
@@ -108,10 +110,20 @@ class App extends Component {
           openModal={this.handleClickIsOpenModal}
         />
         {error && <Error>Image not found!</Error>}
+        {isLoading && (
+          <LoaderStyled>
+            <Loader
+              type="Circles"
+              color="#00BFFF"
+              height={30}
+              width={50}
+              timeout={3000} //3 secs
+            />
+          </LoaderStyled>
+        )}
         {images.length > 0 && (
           <Button oneMorePageOnClick={this.oneMorePageOnClick} />
         )}
-        .{isLoading && <Loader />}
       </>
     );
   }
