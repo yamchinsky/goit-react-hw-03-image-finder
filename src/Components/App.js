@@ -43,7 +43,11 @@ class App extends Component {
         }));
       })
       .catch((error) => {
-        throw new Error(error);
+        const { page } = this.state;
+
+        this.setState({
+          page: page + 1,
+        });
       })
       .finally(() => {
         const { images } = this.state;
